@@ -46,13 +46,23 @@ import {routes, get, patch} from '../decorators'
 
 @routes
 export class Users {
-  @get('/users')
+  @get({ route: '/users' })
   getUsers (req, res) {
     res.send({id: 1});
   }
-
-  @patch('/users')
+  
+  @post({ route: '/users' })
+  createUser (req, res) {
+    
+  }
+  
+  @patch({ route: '/users' })
   updateUser (req, res) {
+    
+  }
+  
+  @del({ route: '/users' })
+  deleteUser (req, res) {
     
   }
 }
