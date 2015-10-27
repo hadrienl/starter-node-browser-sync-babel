@@ -42,7 +42,7 @@ Each method can have a or many method set. This decorator take some params :
 
 ```
 // server/routes/users.js
-import {routes, get, post, patch, del} from '../decorators'
+import {routes, get, post, patch, del} from '../decorators/routes'
 
 @routes
 export class Users {
