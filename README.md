@@ -51,17 +51,22 @@ export class Users {
     res.send({id: 1});
   }
   
-  @post({ route: '/users' })
+  @get({ route: '/users/:id' })
+  getUser (req, res) {
+    res.send({id: 1});
+  }
+  
+  @post({ route: '/users/id' })
   createUser (req, res) {
     
   }
   
-  @patch({ route: '/users' })
+  @patch({ route: '/users/:id' })
   updateUser (req, res) {
     
   }
   
-  @del({ route: '/users' })
+  @del({ route: '/users/:id' })
   deleteUser (req, res) {
     
   }
