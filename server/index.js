@@ -1,10 +1,9 @@
 import express from 'express';
+import {router} from './routing';
 
 export const app = express();
 
-app.get('/api', (req, res) => {
-  res.send('Hello Api');
-});
+app.use('/api', router);
 
 export const server = app.listen(3000, () => {
   const host = server.address().address,
