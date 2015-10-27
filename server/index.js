@@ -2,13 +2,13 @@ import express from 'express';
 
 export const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+app.get('/api', (req, res) => {
+  res.send('Hello Api');
 });
 
 export const server = app.listen(3000, () => {
   const host = server.address().address,
     port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
+  console.log('App listening at http://%s:%s', host, port);
 });
