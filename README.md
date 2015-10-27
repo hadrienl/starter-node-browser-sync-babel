@@ -19,3 +19,41 @@ npm install
 
 Server side code is located into `server` folder and will be transpiled into `dist/server` folder.
 Client side code is located into `client` folder and will be copied into `dist/client` folder.
+
+# Decorators
+
+## Routes
+
+Routes classes are located in `server/routes` folder and will automatically loaded on app start. This classes
+should use decorators `routes` and `get`, `post`, `put`, `patch`, `del`.
+
+### @routes
+
+This decorator must be set on a route class. It's job is to set automatically all the routes. There is no parameter.
+
+### @<method>
+
+Each method can have a or many method set. This decorator take some params :
+
+* `route`: The route when the method will be fire
+* `middlewares`:  The middlewares to attach to the route
+
+### Exemple
+
+```
+// server/routes/users.js
+import {routes, get, patch} from '../decorators'
+
+@routes
+export class Users {
+  @get('/users')
+  getUsers (req, res) {
+    res.send({id: 1});
+  }
+
+  @patch('/users')
+  updateUser (req, res) {
+    
+  }
+}
+```
