@@ -31,7 +31,7 @@ should use decorators `routes` and `get`, `post`, `put`, `patch`, `del`.
 
 This decorator must be set on a route class. It's job is to set automatically all the routes. There is no parameter.
 
-### @<method>
+### @get, @post, @patch, @put, @del
 
 Each method can have a or many method set. This decorator take some params :
 
