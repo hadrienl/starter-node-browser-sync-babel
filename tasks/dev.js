@@ -17,7 +17,7 @@ function startFront () {
 
 function startServer () {
   return new Promise((resolve, reject) => {
-    const server = exec('node ./tasks/start-server.js', (err) => {
+    const server = exec('node --use-strict ./tasks/watch-server', (err) => {
       if (err) {
         return reject(err);
       }
