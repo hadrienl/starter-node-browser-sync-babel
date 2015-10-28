@@ -24,8 +24,8 @@ Client side code is located into `client` folder and will be copied into `dist/c
 
 ## Routes
 
-Routes classes are located in `server/routes` folder and will automatically loaded on app start. This classes
-should use decorators `routes` and `get`, `post`, `put`, `patch`, `del`.
+Routes classes are located in `server/routes` folder and will automatically be loaded on app start. This classes must
+be a `export default` and should use decorators `routes` and `get`, `post`, `put`, `patch`, `del`.
 
 ### @routes
 
@@ -45,7 +45,7 @@ Each method can have a or many method set. This decorator take some params :
 import {routes, get, post, patch, del} from '../decorators/routes'
 
 @routes
-export class Users {
+export default class Users {
   @get({ route: '/users' })
   getUsers (req, res) {
     res.send({id: 1});
