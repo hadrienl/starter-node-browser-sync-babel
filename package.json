@@ -12,6 +12,7 @@
   "author": "Hadrien Lanneau",
   "license": "ISC",
   "dependencies": {
+    "all-files": "^1.0.2",
     "express": "^4.13.3"
   },
   "devDependencies": {
@@ -21,6 +22,7 @@
     "browser-sync": "^2.9.11",
     "bs-html-injector": "^3.0.0",
     "eslint": "^1.7.3",
+    "source-map-support": "^0.3.3",
     "watch": "^0.16.0"
   }
 }
