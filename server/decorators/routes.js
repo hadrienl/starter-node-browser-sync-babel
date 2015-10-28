@@ -1,14 +1,23 @@
-export function routes(Target) {
-  return function (app) {
-    var target = new Target(app);
-    target.app = app;
-    if (Target._routes && Target._routes.length) {
-      Target._routes.forEach(route => {
-        app[route.method](route.path, route.middlewares || [], (...args) => target[route.action](...args));
-      });
-    }
-    target._init && target._init();
-    return target;
+export function routes (opts = {}) {
+  return function routes(Target) {
+    return function (app) {
+      const target = new Target(app);
+      target.app = app;
+      if (Target._routes && Target._routes.length) {
+        Target._routes.forEach(route => {
+          let middlewares = route.middlewares || [];
+          if (opts.middlewares) {
+            if (!Array.isArray(middlewares)) {
+              middlewares = [middlewares];
+            }
+            middlewares = middlewares.concat(opts.middlewares);
+          }
+          app[route.method](route.path, middlewares || [], (...args) => target[route.action](...args));
+        });
+      }
+      target._init && target._init();
+      return target;
+    };
   };
 }
 

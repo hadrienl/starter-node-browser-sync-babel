@@ -29,22 +29,28 @@ be a `export default` and should use decorators `routes` and `get`, `post`, `put
 
 ### @routes
 
-This decorator must be set on a route class. It's job is to set automatically all the routes. There is no parameter.
+This decorator must be set on a route class. It's job is to set automatically all the routes. This decorator take the following params:
+
+* `middlewares`: Middlewares to apply on each routes of this class. Must be a `function` or array of `function`s.
 
 ### @get, @post, @patch, @put, @del
 
-Each method can have a or many method set. This decorator take some params :
+Each method can have a or many method set. This decorator take the following params:
 
 * `route`: The route when the method will be fire
-* `middlewares`:  The middlewares to attach to the route
+* `middlewares`:  The middlewares to apply to the route. Must be a `function` or array of `function`s.
 
 ### Exemple
 
 ```
 // server/routes/users.js
-import {routes, get, post, patch, del} from '../decorators/routes'
+import {routes, get, post, patch, del} from '../decorators/routes';
+import {myMiddleware} from './my-middleware';
+import {authMiddleware} from './auth';
 
-@routes
+@routes({
+  middlewares: myMiddleware
+})
 export default class Users {
   @get({ route: '/users' })
   getUsers (req, res) {
@@ -56,17 +62,17 @@ export default class Users {
     res.send({id: 1});
   }
   
-  @post({ route: '/users/id' })
+  @post({ route: '/users/id', middlewares: authMiddleware })
   createUser (req, res) {
     
   }
   
-  @patch({ route: '/users/:id' })
+  @patch({ route: '/users/:id', middlewares: authMiddleware })
   updateUser (req, res) {
     
   }
   
-  @del({ route: '/users/:id' })
+  @del({ route: '/users/:id', middlewares: authMiddleware })
   deleteUser (req, res) {
     
   }
