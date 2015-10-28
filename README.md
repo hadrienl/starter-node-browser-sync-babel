@@ -12,7 +12,7 @@ npm install
 # Usage
 
 * `npm run server` will run the server only which will be accessible from http://localhost:3000
-* `npm run watch
+* `npm run watch` will watch server files and rebuild, then restart the server
 * `npm run dev` will run both server and client and serve and proxy them with browsersync and watch server
 
 # Structure
