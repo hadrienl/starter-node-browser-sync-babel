@@ -90,5 +90,17 @@ export default class Users {
   getUsersWithError (req, res) {
     return new Promise((resolve, reject) => setTimeout(() => reject(new RoutingError('not found', 404)), 1000));
   }
+
+  // You also can use async keyword
+  @get({ route:'/users/async' })
+  async getUsersAsync (req, res) {
+    const users = await asyncService.getUsers();
+
+    if (users.length) {
+      return users;
+    }
+
+    throws new RoutingError('No user found', 404);
+  }
 }
 ```

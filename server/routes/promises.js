@@ -20,4 +20,9 @@ export default class Promises {
       }, 1000);
     });
   }
+
+  @get({ route: '/prout/async' })
+  async getPromiseAsync () {
+    return 'pwet';
+  }
 }
