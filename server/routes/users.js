@@ -1,4 +1,4 @@
-import {routes, get, post, patch, del} from '../decorators/routes';
+import {middlewares, get, post, patch, del} from '../decorators/routes';
 
 function fakeMiddleware (req, res, next) {
   console.log('I\'m the first middleware');
@@ -10,9 +10,7 @@ function anotherFakeMiddleware (req, res, next) {
   next();
 }
 
-@routes({
-  middlewares: fakeMiddleware
-})
+@middlewares(fakeMiddleware)
 export default class Users {
   users = [];
 

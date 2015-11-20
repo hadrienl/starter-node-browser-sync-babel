@@ -1,6 +1,5 @@
-import {routes, get} from '../decorators/routes';
+import {get} from '../decorators/routes';
 
-@routes
 export default class Home {
   @get({ route: '/' })
   home (req, res) {
