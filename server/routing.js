@@ -22,7 +22,9 @@ fs.readdir(`${__dirname}/routes`, (err, files) => {
           if (result && result.then) {
             result
             .then(data => {
-              if (!data && data !== 0) {
+              if (data === undefined ||
+                  data === null ||
+                  data === '') {
                 return res.sendStatus(204);
               }
               if (typeof data === 'object') {
