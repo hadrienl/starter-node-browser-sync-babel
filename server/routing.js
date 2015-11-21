@@ -22,13 +22,13 @@ fs.readdir(`${__dirname}/routes`, (err, files) => {
           if (result && result.then) {
             result
             .then(data => {
-              if (!data) {
-                return res.status(204).send();
+              if (!data && data !== 0) {
+                return res.sendStatus(204);
               }
               if (typeof data === 'object') {
                 return res.json(data);
               }
-              return res.send(data);
+              return res.send(`${data}`);
             })
             .catch(err => res.status(err.code||500).send(err.message));
           }
